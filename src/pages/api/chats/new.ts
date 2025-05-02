@@ -1,4 +1,3 @@
-// pages/api/chats/new.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '../../../../lib/prisma';
 
@@ -9,12 +8,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const chat = await prisma.chat.create({
       data: {
         title: `Chat ${new Date().toLocaleTimeString()}`,
-        messages: {},
       },
       include: { messages: true },
     });
     res.status(200).json(chat);
-  } catch (error) {
+  } catch (err) {
     res.status(500).json({ error: 'Failed to create chat' });
   }
 }
