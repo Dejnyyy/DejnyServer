@@ -13,8 +13,6 @@ model Chat {
   createdAt DateTime @default(now())
   messages  Message[]
 }
-
-
 model Message {
   id        String   @id @default(uuid())
   role      String
