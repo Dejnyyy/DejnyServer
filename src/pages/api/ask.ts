@@ -28,6 +28,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const answerText = data.choices?.[0]?.message?.content || '';
     res.status(200).json({ question, answerText });
   } catch (err) {
-    res.status(500).json({ error: 'OpenAI error', details: err });
+    res.status(500).json({ err: 'OpenAI error', details: err });
   }
 }
