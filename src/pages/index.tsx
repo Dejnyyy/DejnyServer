@@ -1,8 +1,22 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
-import type { Chat, Message } from '@prisma/client';
 import ReactMarkdown from 'react-markdown';
+
+type Chat = {
+  id: string;
+  title: string;
+  createdAt: Date;
+  messages: Message[];
+};
+
+type Message = {
+  id: string;
+  role: string;
+  text: string;
+  chatId: string;
+  createdAt: Date;
+};
 
 export default function Home() {
   const [input, setInput] = useState('');
@@ -11,7 +25,6 @@ export default function Home() {
   const [chats, setChats] = useState<(Chat & { messages: Message[] })[]>([]);
   const [currentChatId, setCurrentChatId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-
   const currentChat = chats.find((chat) => chat.id === currentChatId);
 
   useEffect(() => {
