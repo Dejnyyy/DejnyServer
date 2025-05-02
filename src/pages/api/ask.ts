@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const data = await response.json();
     const answerText = data.choices?.[0]?.message?.content || '';
     res.status(200).json({ question, answerText });
-  } catch (err: any) {
-    res.status(500).json({ error: 'OpenAI error', details: err.message });
+  } catch (err) {
+    res.status(500).json({ error: 'OpenAI error', details: err });
   }
 }

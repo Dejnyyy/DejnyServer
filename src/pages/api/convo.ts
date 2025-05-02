@@ -65,8 +65,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     res.end();
-  } catch (err: any) {
+  } catch (err) {
     console.error('❌ API ERROR:', err);
-    res.status(500).json({ error: 'Something went wrong', details: err.message });
+    res.status(500).json({ error: 'Something went wrong', details: err });
   }
 }

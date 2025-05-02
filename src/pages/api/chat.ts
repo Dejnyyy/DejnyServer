@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       include: { messages: true },
     });
     res.status(200).json(chats);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch chats' });
+  } catch (err) {
+    res.status(500).json({ err: 'Failed to fetch chats' });
   }
 }
