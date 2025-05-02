@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
-import type { Chat, Message } from '@prisma/client';
+import { Chat, Message } from '@prisma/client';
 import ReactMarkdown from 'react-markdown';
 
 export default function Home() {
