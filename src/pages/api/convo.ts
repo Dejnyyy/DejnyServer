@@ -31,13 +31,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      stream: true,
-      messages: fullMessages.map((m) => ({
-        role: m.role === 'user' ? 'user' : 'assistant',
-        content: m.text,
-      })),
-    });
+        model: 'gpt-4o',
+        stream: true,
+        messages: messages.map((m: { role: string; text: string }) => ({
+          role: m.role === 'user' ? 'user' : 'assistant',
+          content: m.text,
+        })),
+      });
+      
 
     res.writeHead(200, {
       'Content-Type': 'text/plain',
